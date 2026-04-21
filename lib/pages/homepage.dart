@@ -88,25 +88,23 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   SizedBox(height: 17),
-                  SizedBox(
-                    height: 50,
-                    width: double.infinity,
 
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurple,
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        "Login",
-                        style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(390, 50),
+                      backgroundColor: Colors.deepPurple,
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
+
                   SizedBox(height: 17),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
