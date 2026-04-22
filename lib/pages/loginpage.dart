@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:make_app/pages/homepage.dart';
+import 'package:make_app/ulities/commontoast.dart';
 
 class MyLoginPage extends StatefulWidget {
   const MyLoginPage({super.key});
@@ -10,6 +11,10 @@ class MyLoginPage extends StatefulWidget {
 }
 
 class _MyLoginPageState extends State<MyLoginPage> {
+  String name = "";
+  bool changeButton = false;
+  TextEditingController userController = TextEditingController();
+  TextEditingController passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +37,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
           children: [
             Image.asset("lib/images/login_image.png", fit: BoxFit.cover),
             Text(
-              "WELCOME",
+              "WELCOME $name",
               style: TextStyle(
                 fontSize: 27,
                 fontWeight: FontWeight.bold,
@@ -53,6 +58,12 @@ class _MyLoginPageState extends State<MyLoginPage> {
               child: Column(
                 children: [
                   TextFormField(
+                    controller: userController,
+                    onChanged: (value) {
+                      setState(() {
+                        name = value;
+                      });
+                    },
                     decoration: InputDecoration(
                       labelText: "Username",
                       labelStyle: TextStyle(fontWeight: FontWeight.bold),
@@ -71,6 +82,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
                   ),
                   SizedBox(height: 17),
                   TextFormField(
+                    controller: passController,
                     obscureText: true,
                     decoration: InputDecoration(
                       labelText: "Password",
@@ -96,8 +108,29 @@ class _MyLoginPageState extends State<MyLoginPage> {
                       backgroundColor: Colors.deepPurple,
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, "home");
+                      if (userController.text.trim().isEmpty) {
+                        commonToast(
+                          context,
+                          "Please EnterUsername",
+                          bgcolor: Colors.red.shade200,
+                        );
+                      } else if (passController.text.trim().isEmpty) {
+                        commonToast(
+                          context,
+                          "Please Enter Password",
+                          bgcolor: Colors.red.shade200,
+                          durvalue: 4,
+                        );
+                      } else {
+                        commonToast(
+                          context,
+                          "Login Succesfull",
+                          bgcolor: Colors.green.shade200,
+                        );
+                        Navigator.pushNamed(context, "home");
+                      }
                     },
+
                     child: Text(
                       "Login",
                       style: TextStyle(
@@ -105,6 +138,38 @@ class _MyLoginPageState extends State<MyLoginPage> {
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
+                    ),
+                  ),
+                  SizedBox(height: 17),
+                  InkWell(
+                    onTap: () async {
+                      changeButton = true;
+                      setState(() {});
+                      await Future.delayed(Duration(seconds: 2));
+                      Navigator.pushNamed(context, "home");
+                    },
+                    child: AnimatedContainer(
+                      duration: Duration(seconds: 2),
+                      width: changeButton ? 50 : 400,
+                      height: 50,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Colors.deepPurple,
+                        border: BoxBorder.all(width: 2),
+                        shape: changeButton
+                            ? BoxShape.circle
+                            : BoxShape.rectangle,
+                      ),
+                      child: changeButton
+                          ? Icon(Icons.done, color: Colors.white)
+                          : Text(
+                              "Login",
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
                     ),
                   ),
 
