@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:make_app/pages/homepage.dart';
 import 'package:make_app/pages/loginpage.dart';
+import 'package:make_app/pages/tryvalidatepage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       routes: {
         "login": (context) => MyLoginPage(),
         "home": (context) => MyHomePage(),
+        "valid":(context) => MyValidation(),
       },
     );
   }
