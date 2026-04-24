@@ -26,11 +26,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      initialRoute: "login",
+      initialRoute: "home",
       routes: {
         "login": (context) => MyLoginPage(),
         "home": (context) => MyHomePage(),
-        "valid":(context) => MyValidation(),
+        "valid": (context) => MyValidation(),
       },
     );
   }

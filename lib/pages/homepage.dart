@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:make_app/pages/loginpage.dart';
+import 'package:make_app/ulities/text.dart';
+import 'package:make_app/widget/drawer.dart';
+import 'package:make_app/widget/drawer2.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -27,14 +30,17 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Column(
         children: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, "login");
-            },
-            child: Text("Go To Login Page"),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "login");
+              },
+              child: textdef("Go To Login Page", 22, color: Colors.cyan),
+            ),
           ),
         ],
       ),
+      drawer: MyDrawerer(),
     );
   }
 }
