@@ -1,4 +1,19 @@
 class Catalogmodel {
+  final items = [
+  (
+    id: "Codepur001",
+    name: "Iphone 12 Pro",
+    desc: "Apple Iphone 12th Generation ",
+    price: 999,
+    color: "#335058",
+    image: "https://youtube.com",
+  ),
+];
+}
+
+
+
+class items {
   final String id;
   final String name;
   final String desc;
@@ -6,7 +21,7 @@ class Catalogmodel {
   final String color;
   final String image;
 
-  Catalogmodel({
+  items({
     required this.id,
     required this.name,
     required this.desc,
@@ -16,13 +31,4 @@ class Catalogmodel {
   });
 }
 
-final Products = [
-  Catalogmodel(
-    id: "Codepur001",
-    name: "Iphone 12 Pro",
-    desc: "Apple Iphone 12th Generation ",
-    price: 999,
-    color: "#335058",
-    image: "https://youtube.com",
-  ),
-];
+

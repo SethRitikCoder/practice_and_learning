@@ -209,7 +209,9 @@ class _MyLoginPageState extends State<MyLoginPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, "apifetch");
+                          },
                           child: Text(
                             "Forget Password",
                             style: TextStyle(

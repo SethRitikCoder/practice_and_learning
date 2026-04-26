@@ -31,13 +31,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children: [
           Center(
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, "login");
-              },
-              child: textdef("Go To Login Page", 22, color: Colors.cyan),
-            ),
-          ),
+            child: Text(context.runtimeType.toString()),
+          )
         ],
       ),
       drawer: MyDrawerer(),

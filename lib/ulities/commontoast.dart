@@ -14,3 +14,18 @@ commonToast(
     ),
   );
 }
+
+commonToast2(
+  BuildContext context,
+  String massage, {
+  Color bgcolor = Colors.greenAccent,
+  int? dur,
+}) {
+  return ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(massage),
+      backgroundColor: bgcolor,
+      duration: Duration(seconds: dur ?? 2),
+    ),
+  );
+}

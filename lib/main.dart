@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:make_app/pages/addapi.dart';
+import 'package:make_app/pages/apifetchpage.dart';
 
 import 'package:make_app/pages/homepage.dart';
 import 'package:make_app/pages/loginpage.dart';
@@ -22,11 +24,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Mytheme.lighttheme,
 
-      initialRoute: "home",
+      initialRoute: "addApi",
       routes: {
         "login": (context) => MyLoginPage(),
         "home": (context) => MyHomePage(),
         "valid": (context) => MyValidation(),
+        "apifetch":(context)=>MyApiFetch(),
+        "addApi":(context)=>MyAddApi()
       },
     );
   }
