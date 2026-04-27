@@ -10,7 +10,7 @@ class MyApiFetch extends StatefulWidget {
 }
 
 class _MyApiFetchState extends State<MyApiFetch> {
-  late Future<List<PostModel>> myfuture;
+  late Future<List<PostModel>?> myfuture;
   @override
   void initState() {
     // TODO: implement initState
@@ -34,7 +34,7 @@ class _MyApiFetchState extends State<MyApiFetch> {
         ),
         centerTitle: true,
       ),
-      body: FutureBuilder<List<PostModel>>(
+      body: FutureBuilder<List<PostModel>?>(
         future: myfuture,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

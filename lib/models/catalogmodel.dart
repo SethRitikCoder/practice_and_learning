@@ -13,7 +13,7 @@ class Catalogmodel {
 
 
 
-class items {
+class Items {
   final String id;
   final String name;
   final String desc;
@@ -21,7 +21,7 @@ class items {
   final String color;
   final String image;
 
-  items({
+  Items({
     required this.id,
     required this.name,
     required this.desc,

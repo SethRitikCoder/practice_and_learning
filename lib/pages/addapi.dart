@@ -111,19 +111,29 @@ class _MyAddApiState extends State<MyAddApi> {
                             is_Loading = true;
                           });
 
-                          await Apiservice().addApi(
+                          final data = await Apiservice().addApi(
                             titleController.text,
                             bodyController.text,
                           );
-                          titleController.clear();
-                          bodyController.clear();
-                          if(!mounted) return;
+                          if (!mounted) return;
+                          if (data == null) {
+                            commonToast2(
+                              context,
+                              "Check Your Internet Or Server Error",
+                            );
+                            setState(() {
+                              is_Loading = false;
+                            });
+                          } else {
+                            titleController.clear();
+                            bodyController.clear();
 
-                          commonToast2(context, "Successfully Add Data");
+                            commonToast2(context, "Successfully Add Data");
 
-                          setState(() {
-                            is_Loading = false;
-                          });
+                            setState(() {
+                              is_Loading = false;
+                            });
+                          }
                         }
                       },
                       child: Text(
