@@ -103,7 +103,7 @@ class _MyAddApiState extends State<MyAddApi> {
                         side: BorderSide(width: 1),
                         elevation: 2.0,
                         backgroundColor: Colors.deepPurple.shade300,
-                        foregroundColor: Colors.white,
+                        foregroundColor: Colors.black,
                       ),
                       onPressed: () async {
                         if (_formkey.currentState!.validate()) {
@@ -111,17 +111,15 @@ class _MyAddApiState extends State<MyAddApi> {
                             is_Loading = true;
                           });
 
-                          final response = await Apiservice().addApi(
+                          await Apiservice().addApi(
                             titleController.text,
                             bodyController.text,
                           );
                           titleController.clear();
                           bodyController.clear();
-                          if (response == true) {
-                            commonToast2(context, "Successfully Add Data");
-                          } else {
-                            commonToast2(context, "Failed to Add Data");
-                          }
+                          if(!mounted) return;
+
+                          commonToast2(context, "Successfully Add Data");
 
                           setState(() {
                             is_Loading = false;

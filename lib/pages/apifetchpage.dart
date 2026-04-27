@@ -56,7 +56,6 @@ class _MyApiFetchState extends State<MyApiFetch> {
               ),
             );
           } else if (snapshot.hasData) {
-            final data = snapshot.data;
             return ListView.separated(
               separatorBuilder: (context, index) => SizedBox(height: 5),
               itemCount: snapshot.data!.length,
@@ -65,10 +64,10 @@ class _MyApiFetchState extends State<MyApiFetch> {
                 return Card(
                   child: ListTile(
                     title: Text(
-                      data.title,
+                      data.title.toString(),
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    subtitle: Text(data.body),
+                    subtitle: Text(data.body.toString()),
                     leading: CircleAvatar(child: Text("${data.userId}")),
                     trailing: Text(data.id.toString()),
                   ),
