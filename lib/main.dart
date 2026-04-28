@@ -3,7 +3,7 @@ import 'package:make_app/pages/addapi.dart';
 import 'package:make_app/pages/apifetchpage.dart';
 import 'package:make_app/pages/catologpage.dart';
 
-import 'package:make_app/pages/homepage.dart';
+import 'package:make_app/pages/homepage_jsonlocal.dart';
 import 'package:make_app/pages/loginpage.dart';
 import 'package:make_app/pages/tryvalidatepage.dart';
 import 'package:make_app/widget/theme.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Mytheme.lighttheme,
 
-      initialRoute: "catalog",
+      initialRoute: "home",
       routes: {
         "login": (context) => MyLoginPage(),
         "home": (context) => MyHomePage(),
