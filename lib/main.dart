@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:make_app/pages/addapi.dart';
 import 'package:make_app/pages/apifetchpage.dart';
 import 'package:make_app/pages/catologpage.dart';
+import 'package:make_app/pages/hero_animation.dart';
+import 'package:make_app/pages/heroanimation2.dart';
 
 import 'package:make_app/pages/homepage_jsonlocal.dart';
 import 'package:make_app/pages/loginpage.dart';
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: Mytheme.lighttheme,
 
-      initialRoute: "home",
+      initialRoute: "hero",
       routes: {
         "login": (context) => MyLoginPage(),
         "home": (context) => MyHomePage(),
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
         "apifetch": (context) => MyApiFetch(),
         "addApi": (context) => MyAddApi(),
         "catalog": (context) => MyCatologPage(),
+        "hero": (context) => MyHeroAnimation1(),
       },
     );
   }
