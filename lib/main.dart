@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:make_app/pages/add_to_cart.dart';
 import 'package:make_app/pages/addapi.dart';
 import 'package:make_app/pages/apifetchpage.dart';
 import 'package:make_app/pages/catologpage.dart';
 import 'package:make_app/pages/hero_animation.dart';
-import 'package:make_app/pages/heroanimation2.dart';
+import 'package:make_app/pages/heroanimation1.dart';
 
 import 'package:make_app/pages/homepage_jsonlocal.dart';
 import 'package:make_app/pages/loginpage.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         "addApi": (context) => MyAddApi(),
         "catalog": (context) => MyCatologPage(),
         "hero": (context) => MyHeroAnimation1(),
+        "cart": (context) => MyAddCart(),
       },
     );
   }
