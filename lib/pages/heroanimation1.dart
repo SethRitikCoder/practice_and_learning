@@ -91,7 +91,7 @@ class _MyHeroAnimation1State extends State<MyHeroAnimation1> {
           return ListTile(
             leading: Hero(
               tag: image[index],
-              child: Container(child: Image.asset(image[index])),
+              child:  Image.asset(image[index])
             ),
             title: Text(
               name[index],

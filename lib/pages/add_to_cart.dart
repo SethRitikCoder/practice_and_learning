@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:make_app/ulities/cartservice_list.dart';
 
 class MyAddCart extends StatefulWidget {
   final String? title;
@@ -9,15 +10,12 @@ class MyAddCart extends StatefulWidget {
 }
 
 class _MyAddCartState extends State<MyAddCart> {
-  List<String> list = [];
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     if (widget.title != null) {
-      list.add(widget.title.toString());
-      list.add("Iphone 15");
-      list.add("Samsung S25");
+      CartService().items.add(widget.title.toString());
     }
   }
 
@@ -40,7 +38,7 @@ class _MyAddCartState extends State<MyAddCart> {
       ),
       body: Column(
         children: [
-          Expanded(child: CartList(list: list)),
+          Expanded(child: CartList(list: CartService().items)),
           Divider(),
           _CartTotal(),
         ],
@@ -99,8 +97,8 @@ class CartListState extends State<CartList> {
     return ListView.builder(
       itemCount: widget.list.length,
       itemBuilder: (context, index) => ListTile(
-        leading: Icon(Icons.done),
-        trailing: Icon(Icons.remove_circle_outline),
+        leading: Icon(Icons.done, color: Colors.black),
+        trailing: Icon(Icons.remove_circle_outline, color: Colors.black),
         onTap: () {
           setState(() {
             widget.list.removeAt(index);
