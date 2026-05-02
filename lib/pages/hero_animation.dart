@@ -117,7 +117,7 @@ class _MyHeroAnimation2State extends State<MyHeroAnimation2> {
           Navigator.pushNamed(context, "cart");
         },
         backgroundColor: Colors.grey[800],
-        foregroundColor: Colors.whiteadd,
+        foregroundColor: Colors.white,
         child: Icon(Icons.add_shopping_cart),
       ),
     );
