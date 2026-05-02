@@ -101,7 +101,8 @@ class _MyHeroAnimation2State extends State<MyHeroAnimation2> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         loremIpsum(words: 20, paragraphs: 1),
-                        style: TextStyle(fontSize: 20, color: Colors.black),textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 20, color: Colors.black),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ],
@@ -116,6 +117,7 @@ class _MyHeroAnimation2State extends State<MyHeroAnimation2> {
           Navigator.pushNamed(context, "cart");
         },
         backgroundColor: Colors.grey[800],
+        foregroundColor: Colors.whiteadd,
         child: Icon(Icons.add_shopping_cart),
       ),
     );

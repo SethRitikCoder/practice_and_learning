@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:make_app/pages/add_to_cart.dart';
 import 'package:make_app/pages/hero_animation.dart';
 
 class MyHeroAnimation1 extends StatefulWidget {
@@ -56,7 +57,7 @@ class _MyHeroAnimation1State extends State<MyHeroAnimation1> {
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.grey[200],
         title: SafeArea(
           top: true,
           child: Column(
@@ -122,7 +123,9 @@ class _MyHeroAnimation1State extends State<MyHeroAnimation1> {
                         minimumSize: Size(40, 30),
                         backgroundColor: Colors.grey[800],
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>MyAddCart(title: name[index],)));
+                      },
                       child: Text("Buy"),
                     ),
                   ],
