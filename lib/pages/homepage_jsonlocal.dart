@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
 
 import 'package:make_app/services/json_service.dart';
 
@@ -14,16 +15,28 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late Future<List<LocalfileModel>?> myfuture;
-  
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    myfuture = JsonService().getjson();
+    myfuture = JsonService().getjson(jsonPath: "assets/data.json");
+  }
+
+  void changeMyfuture(String type) {
+    setState(() {
+      if (type == "api") {
+        myfuture = JsonService().getjson(
+          api: "https://jsonplaceholder.typicode.com/posts",
+        );
+      } else {
+        myfuture = JsonService().getjson(jsonPath: "assets/data.json");
+      }
+    });
   }
 
   @override
-  Widget build(BuildContext context) { 
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -38,47 +51,100 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         centerTitle: true,
       ),
-      body: FutureBuilder<List<LocalfileModel>?>(
-        future: myfuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Column(
-                children: [
-                  Text("Error:${snapshot.error}"),
-                  ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        myfuture = JsonService().getjson();
-                      });
-                    },
-                    child: Text("Retry"),
-                  ),
-                ],
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    changeMyfuture("api");
+                  });
+                },
+                child: Text("api"),
               ),
-            );
-          } else if (snapshot.hasData) {
-            return ListView.separated(
-              itemCount: snapshot.data!.length,
-              separatorBuilder: (context, index) => SizedBox(height: 10),
-              itemBuilder: (context, index) {
-                final data = snapshot.data![index];
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    changeMyfuture("json");
+                  });
+                },
+                child: Text("json"),
+              ),
+            ],
+          ),
 
-                return Card(
-                  child: ListTile(
-                    title: Text(data.name.toString()),
-                    subtitle: Text(data.description.toString()),
-                    trailing: Text(data.price.toString()),
-                    leading: CircleAvatar(child: Text(data.id.toString())),
-                  ),
-                );
-              }
-            );
-          } return Center(child: Text("No Data Available"));
-        })
-      
+          Expanded(
+            child: FutureBuilder<List<LocalfileModel>?>(
+              future: myfuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Column(
+                      children: [
+                        Text("Error:${snapshot.error}"),
+                        ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              myfuture = JsonService().getjson(
+                                jsonPath: "assets/data.json",
+                              );
+                            });
+                          },
+                          child: Text("Retry"),
+                        ),
+                      ],
+                    ),
+                  );
+                } else if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+                  return ListView.separated(
+                    itemCount: snapshot.data!.length,
+                    separatorBuilder: (context, index) => SizedBox(height: 10),
+                    itemBuilder: (context, index) {
+                      final data = snapshot.data![index];
+
+                      return Card(
+                        child: ListTile(
+                          title: Text(data.name.toString()),
+                          subtitle: Text(data.description.toString()),
+                          trailing: Text(data.price.toString()),
+                          leading: CircleAvatar(
+                            child: Text(data.id.toString()),
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }
+                return Center(child: Text("No Data Available"));
+              },
+            ),
+          ),
+        ],
+      ),
+      floatingActionButton: Column(
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                changeMyfuture("api");
+              });
+            },
+            child: Icon(Icons.cloud),
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                changeMyfuture("json");
+              });
+            },
+            child: Icon(Icons.storage),
+          ),
+        ],
+      ),
     );
   }
 }
