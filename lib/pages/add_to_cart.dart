@@ -15,7 +15,7 @@ class _MyAddCartState extends State<MyAddCart> {
     // TODO: implement initState
     super.initState();
     if (widget.title != null) {
-      CartService().items.add(widget.title.toString());
+      CartService().addItems(widget.title!.toString());
     }
   }
 
